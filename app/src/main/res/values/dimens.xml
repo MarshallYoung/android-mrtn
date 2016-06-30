@@ -1,0 +1,17 @@
+<resources>
+
+    <dimen name="toolbar_height">54dp</dimen>
+    <dimen name="button_height">42dp</dimen>
+    <!-- 字号 -->
+    <dimen name="textsize_title">24sp</dimen>
+    <dimen name="textsize_input">18sp</dimen>
+    <dimen name="textsize_button">18sp</dimen>
+    <dimen name="dm_content_summary_txt">15dip</dimen>
+    <dimen name="calendar_iDayCellSize">40dip</dimen>
+    <dimen name="calendar_iDayHeaderHeight">30dip</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_side_input">18dp</dimen>
+    <dimen name="padding_content">15dp</dimen>
+
+</resources>

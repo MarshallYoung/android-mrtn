@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <EditText
+        android:id="@+id/txt_area_mc_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_txt"
+        android:drawableLeft="@drawable/mc_search_area_id_bg"
+        android:hint="商户编号"
+        android:textColor="@color/cl_login_tiyan_huise"
+        android:textSize="@dimen/textsize_input" />
+
+    <EditText
+        android:id="@+id/txt_area_mc_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape_txt"
+        android:drawableLeft="@drawable/mc_search_area_name_bg"
+        android:hint="商户名称"
+        android:textColor="@color/cl_login_tiyan_huise"
+        android:textSize="@dimen/textsize_input" />
+
+    <Button
+        android:id="@+id/btn_search"
+        style="@style/btn_blue"
+        android:layout_marginTop="5dp"
+        android:onClick="onClick_btn_search_two"
+        android:text="查询" />
+
+</LinearLayout>

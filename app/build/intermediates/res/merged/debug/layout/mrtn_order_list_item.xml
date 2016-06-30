@@ -1,0 +1,178 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:background="@color/gray_line"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_taskId"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="任务单编号："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_taskId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_taskType"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="任务单类型："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_taskType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_mcName"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="  商户名称："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_mcName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/cl_login_tiyan"
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_termId"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="  终端编号："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_termId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/cl_login_tiyan"
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_termaddr"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="终端地址："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_termaddr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/cl_login_tiyan"
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_item_disptTime"
+            android:layout_width="110dip"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="派工时间："
+            android:textSize="@dimen/dm_content_summary_txt" />
+
+        <TextView
+            android:id="@+id/txt_order_item_disptTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_order_PredictTime"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="设置预计上门时间"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/dm_content_summary_txt" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_line" />
+
+</LinearLayout>

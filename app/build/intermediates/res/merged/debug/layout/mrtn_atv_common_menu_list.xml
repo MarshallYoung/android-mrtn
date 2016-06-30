@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/cl_login_tiyan"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.yuchengtech.mrtn.views.PopupListView
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"></com.yuchengtech.mrtn.views.PopupListView>
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">商户云服务</string>
+    <string name="login">登录</string>
+    <string name="exit">退出</string>
+    <string name="homepage">首页</string>
+    <string name="message">消息</string>
+    <string name="update">更新</string>
+    <string name="basic_info">基本资料</string>
+    <string name="about_us">关于我们</string>
+    <string name="check_update">检测更新</string>
+
+</resources>

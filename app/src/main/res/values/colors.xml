@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cl_login_tiyan">#7aa9ef</color>
+    <color name="cl_login_tiyan_huise">#a3a3a1</color>
+    <!-- 灰 -->
+    <color name="gray_background">#f5f5f5</color>
+    <color name="gray_line">#999999</color>
+    <color name="gray_title">#777777</color>
+    <color name="gray_text">#cccccc</color>
+    <color name="gray_dark">#cccccc</color>
+    <color name="gray_light">#eeeeee</color>
+    <!-- 蓝 -->
+    <color name="blue_background">#1E88E5</color>
+    <color name="blue_bg_btn">#60a0e0</color>
+    <color name="blue_bg_btn_pressed">#4080c0</color>
+    <color name="blue_text">#00aaff</color>
+    <color name="cl_more_bg">#e7e5e6</color>
+    <color name="black">#ff000000</color>
+    <color name="cl_dialog_canle">#e88889</color>
+    <!-- 白 -->
+    <color name="white">#ffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+</resources>
