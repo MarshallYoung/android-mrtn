@@ -109,15 +109,20 @@
         <item name="android:textColor">@color/selector_tab_text</item>
         <item name="android:button">@null</item>
     </style>
-    <!-- 蓝色按钮 -->
-    <style name="btn_blue">
+    <!-- 按钮 -->
+    <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/selector_btn_blue</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textsize_button</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
+
+    <style name="Button.Blue">
+        <item name="android:background">@drawable/selector_btn_blue</item>
+    </style>
+
     <!-- 选项卡按钮 -->
     <style name="LinearLayout_Option">
         <item name="android:layout_width">match_parent</item>

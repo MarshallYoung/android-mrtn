@@ -26,6 +26,8 @@
     <color name="blue_bg_btn_pressed">#4080c0</color>
     <color name="blue_btn_bg_color">#AEDEF4</color>
     <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+    <color name="blue_button_background">#1E88E5</color>
+    <color name="blue_button_background_pressed">#0077dd</color>
     <color name="blue_text">#00aaff</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -52,6 +54,7 @@
     <color name="gray_dark">#cccccc</color>
     <color name="gray_light">#eeeeee</color>
     <color name="gray_line">#999999</color>
+    <color name="gray_tab">#f1f1f1</color>
     <color name="gray_text">#cccccc</color>
     <color name="gray_title">#777777</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
@@ -70,6 +73,8 @@
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_50">#ff009688</color>
     <color name="material_deep_teal_500">#ff009688</color>
+    <color name="orange">#ff6700</color>
+    <color name="orange_pressed">#f06100</color>
     <color name="possible_result_points">#c0ffff00</color>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -165,6 +170,11 @@
     <dimen name="button_height">42dp</dimen>
     <dimen name="calendar_iDayCellSize">40dip</dimen>
     <dimen name="calendar_iDayHeaderHeight">30dip</dimen>
+    <dimen name="cell_height">42dp</dimen>
+    <dimen name="cell_height_minus_bottom_ply">41.5dp</dimen>
+    <dimen name="cell_height_minus_top_ply">41dp</dimen>
+    <dimen name="cell_padding">10dp</dimen>
+    <dimen name="cell_text_size">14sp</dimen>
     <dimen name="common_circle_width">3dp</dimen>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -991,6 +1001,17 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
+    <style name="Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textsize_button</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+    <style name="Button.Blue">
+        <item name="android:background">@drawable/selector_btn_blue</item>
+    </style>
     <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/mrtn_login_ck_style</item>
     </style>
@@ -1324,14 +1345,6 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
-    </style>
-    <style name="btn_blue">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/button_height</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/selector_btn_blue</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/textsize_button</item>
     </style>
     <style name="dialog_blue_button" parent="android:Widget.Button">
         <item name="android:layout_width">wrap_content</item>

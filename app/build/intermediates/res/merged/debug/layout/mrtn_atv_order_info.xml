@@ -45,10 +45,9 @@
 
             <Button
                 android:id="@+id/btn_up"
-                style="@style/btn_blue"
+                style="@style/Button.Blue"
                 android:layout_width="140dp"
                 android:text="添加图片" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

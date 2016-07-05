@@ -14,14 +14,10 @@ public class LogUtil {
 
     /**
      * 输出错误日志
-     *
-     * @param tag 标记
-     * @param msg 信息
      */
     public static void e(String tag, String msg) {
         if (DEBUG) {
             Log.e(tag, msg);
         }
     }
-
 }

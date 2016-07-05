@@ -14,4 +14,13 @@
     <dimen name="margin_side_input">18dp</dimen>
     <dimen name="padding_content">15dp</dimen>
 
+    <!-- cell的所有设置
+       height_minus_ply是高度减去厚度,其与高度的差值是边框的厚度,
+       此厚度用于drawable的xml文件布局,具体见布局
+       修改cell_height时请同时修改cell_height_minus后缀的所有参数 -->
+    <dimen name="cell_height">42dp</dimen>
+    <dimen name="cell_height_minus_top_ply">41dp</dimen>
+    <dimen name="cell_height_minus_bottom_ply">41.5dp</dimen>
+    <dimen name="cell_padding">10dp</dimen>
+    <dimen name="cell_text_size">14sp</dimen>
 </resources>

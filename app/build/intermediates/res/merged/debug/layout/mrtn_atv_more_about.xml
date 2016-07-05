@@ -67,12 +67,11 @@
 
             <Button
                 android:id="@+id/btn_phone"
-                style="@style/btn_blue"
+                style="@style/Button.Blue"
                 android:layout_marginLeft="15dip"
                 android:layout_marginRight="15dip"
                 android:layout_marginTop="30dip"
                 android:text="电话：" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

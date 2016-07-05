@@ -90,8 +90,7 @@
 
     <Button
         android:id="@+id/btn_query"
-        style="@style/btn_blue"
+        style="@style/Button.Blue"
         android:layout_marginTop="3dp"
         android:text="查询" />
-
 </LinearLayout>

@@ -59,9 +59,8 @@
 
         <Button
             android:id="@+id/btn_login"
-            style="@style/btn_blue"
+            style="@style/Button.Blue"
             android:layout_marginTop="20dp"
             android:text="@string/login" />
     </LinearLayout>
-
 </LinearLayout>

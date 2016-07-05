@@ -98,7 +98,7 @@
 
                 <Button
                     android:id="@+id/button3"
-                    style="@style/btn_blue"
+                    style="@style/Button.Blue"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="5dp"
@@ -317,7 +317,7 @@
 
                 <Button
                     android:id="@+id/button1"
-                    style="@style/btn_blue"
+                    style="@style/Button.Blue"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_margin="5dp"
@@ -326,7 +326,7 @@
 
                 <Button
                     android:id="@+id/button2"
-                    style="@style/btn_blue"
+                    style="@style/Button.Blue"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_margin="5dp"
@@ -335,5 +335,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

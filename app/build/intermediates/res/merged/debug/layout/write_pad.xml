@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/tablet_ok"
-            style="@style/btn_blue"
+            style="@style/Button.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -27,7 +27,7 @@
 
         <Button
             android:id="@+id/tablet_clear"
-            style="@style/btn_blue"
+            style="@style/Button.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -37,7 +37,7 @@
 
         <Button
             android:id="@+id/tablet_cancel"
-            style="@style/btn_blue"
+            style="@style/Button.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
