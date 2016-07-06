@@ -2,6 +2,7 @@ package com.yuchengtech.mrtn.base;
 
 import android.app.Application;
 
+import com.yuchengtech.mrtn.base.manager.NetworkManager;
 import com.yuchengtech.mrtn.base.manager.UserManager;
 
 /**
@@ -9,8 +10,9 @@ import com.yuchengtech.mrtn.base.manager.UserManager;
  */
 public class MrtnApplication extends Application {
 
-    public static String sid;// sessionId
     private static MrtnApplication instance;
+    public static String sid;// sessionId
+    public static NetworkManager networkManager;
 
     public static MrtnApplication getInstance() {
         return instance;
@@ -22,5 +24,6 @@ public class MrtnApplication extends Application {
         UserManager.getInstance();
         instance = this;
         sid = "";
+        networkManager = new NetworkManager(getApplicationContext());
     }
 }

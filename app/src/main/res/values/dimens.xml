@@ -1,12 +1,13 @@
 <resources>
     <dimen name="toolbar_height">48dp</dimen>
     <dimen name="button_height">42dp</dimen>
+    <dimen name="icon_length">30dp</dimen>
     <!-- 字号 -->
     <dimen name="text_size">16sp</dimen>
     <dimen name="input_text_size">16sp</dimen>
     <dimen name="button_text_size">18sp</dimen>
-    <dimen name="title_text_size">18sp</dimen>
-
+    <dimen name="title_text_size">24sp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
     <dimen name="dm_content_summary_txt">15dip</dimen>
     <dimen name="calendar_iDayCellSize">40dip</dimen>
     <dimen name="calendar_iDayHeaderHeight">30dip</dimen>
@@ -14,7 +15,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_side_input">18dp</dimen>
     <dimen name="padding_content">15dp</dimen>
-
     <!-- cell的所有设置
        height_minus_ply是高度减去厚度,其与高度的差值是边框的厚度,
        此厚度用于drawable的xml文件布局,具体见布局

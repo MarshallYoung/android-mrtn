@@ -1,7 +1,6 @@
 package com.yuchengtech.mrtn.base.manager;
 
-import android.app.Activity;
-import android.util.Log;
+import android.content.Context;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -14,7 +13,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.yuchengtech.mrtn.base.YXAPI;
-import com.yuchengtech.mrtn.base.YXParams;
+import com.yuchengtech.mrtn.base.util.LogUtil;
 import com.yuchengtech.mrtn.base.util.StringUtil;
 import com.yuchengtech.mrtn.login.bean.LoginRequest;
 import com.yuchengtech.mrtn.utils.SystemUtil;
@@ -31,15 +30,10 @@ import java.util.Map;
  */
 public class NetworkManager {
 
-    private RequestQueue mQueue;
+    private static final String TAG = "NetworkManager";
+    private static RequestQueue mQueue;
 
-    /**
-     * 构造方法
-     *
-     * @param mContext
-     */
-    public NetworkManager(final Activity context) {
-        super();
+    public NetworkManager(Context context) {
         this.mQueue = Volley.newRequestQueue(context);
     }
 
@@ -49,12 +43,10 @@ public class NetworkManager {
      * @param userInfo 登录信息
      * @param listener 登录成功执行方法
      */
-    public void Login(final LoginRequest userInfo,
-                      final NetworkListener listener, final CookiesListener cookieListener) {
-        // 加密密码
-        final String encryptPwd = SystemUtil.getMD5(userInfo.password);
-        StringRequest stringRequest = new StringRequest(Method.POST,
-                YXAPI.URL_LOGIN, new Response.Listener<String>() {
+    public void Login(final LoginRequest userInfo, final NetworkListener listener, final CookiesListener cookieListener) {
+        // 加密
+        final String encryptPwd = SystemUtil.getMD5(userInfo.pwd);
+        StringRequest stringRequest = new StringRequest(Method.POST, YXAPI.URL_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 listener.onSuccess(response);
@@ -68,8 +60,8 @@ public class NetworkManager {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
-                map.put(YXParams.Login.USERNAME, userInfo.username);
-                map.put(YXParams.Login.PASSWORD, encryptPwd);
+                map.put("username", userInfo.username);
+                map.put("password", encryptPwd);
                 return map;
             }
 
@@ -79,14 +71,12 @@ public class NetworkManager {
                 try {
                     Map<String, String> responseHeaders = response.headers;
                     // 输出日志
-                    for (Map.Entry<String, String> entry : responseHeaders
-                            .entrySet()) {
-                        Log.e("==" + entry.getKey(), entry.getValue());
+                    for (Map.Entry<String, String> entry : responseHeaders.entrySet()) {
+                        LogUtil.e(TAG, "key:  " + entry.getKey() + "  value:  " + entry.getValue());
                     }
                     String rawCookies = responseHeaders.get("Set-Cookie");// cookie值
                     String sid = StringUtil.getSId(rawCookies);
                     String dataString = new String(response.data, "UTF-8");// 返回值
-                    Log.e("==sid==", sid);
                     cookieListener.onSId(sid);
                     return Response.success(dataString,
                             HttpHeaderParser.parseCacheHeaders(response));
@@ -100,13 +90,13 @@ public class NetworkManager {
 
     // 回调
     public interface NetworkListener {
-        public void onSuccess(String response);
+        void onSuccess(String response);
 
-        public void onFail(VolleyError error);
+        void onFail(VolleyError error);
     }
 
     // 操作Cookies的监听
     public interface CookiesListener {
-        public void onSId(String sid);
+        void onSId(String sid);
     }
 }

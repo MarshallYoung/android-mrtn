@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="input_username">输入用户名</string>
-    <string name="input_password">输入密码</string>
-
+    <string name="input_pwd">输入密码</string>
 </resources>

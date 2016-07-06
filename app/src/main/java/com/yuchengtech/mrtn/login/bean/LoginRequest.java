@@ -8,11 +8,11 @@ import com.yuchengtech.mrtn.base.bean.YXRequest;
 public class LoginRequest extends YXRequest {
 
     public String username;
-    public String password;
+    public String pwd;
 
-    public LoginRequest(String username, String password) {
+    public LoginRequest(String username, String pwd) {
         super();
         this.username = username;
-        this.password = password;
+        this.pwd = pwd;
     }
 }

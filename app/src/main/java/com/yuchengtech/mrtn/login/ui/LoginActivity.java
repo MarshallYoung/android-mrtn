@@ -14,8 +14,6 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.yuchengtech.mrtn.R;
 import com.yuchengtech.mrtn.base.MrtnApplication;
-import com.yuchengtech.mrtn.base.manager.DebugManager;
-import com.yuchengtech.mrtn.base.manager.NetworkManager;
 import com.yuchengtech.mrtn.base.manager.NetworkManager.CookiesListener;
 import com.yuchengtech.mrtn.base.manager.NetworkManager.NetworkListener;
 import com.yuchengtech.mrtn.base.manager.UserManager;
@@ -37,13 +35,16 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class LoginActivity extends BaseActivity {
 
+    private static final String TAG = "LoginActivity";
+    private static final String USERNAME = "username";
+    private static final String PWD = "p16";
+
     @Bind(R.id.btn_back)
-    Button btn_back;// 后退
+    Button btn_back;
     @Bind(R.id.edt_username)
-    EditText edt_username;// 用户名
-    @Bind(R.id.edt_password)
-    EditText edt_password;// 密码
-    private NetworkManager networkManager;
+    EditText edt_username;
+    @Bind(R.id.edt_p16)
+    EditText edt_p16;
     private SharedPreferences preference;
 
     @Override
@@ -62,12 +63,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void intiView() {
-        btn_back.setVisibility(View.GONE);
-        // 回显用户名密码
-        String username = preference.getString(Preferences.USERNAME, "");
+        btn_back.setVisibility(View.INVISIBLE);
+        edt_p16.setInputType(0x81);
+        // 回显用户名
+        String username = preference.getString(USERNAME, "");
         edt_username.setText(username);
-        String password = preference.getString(Preferences.PASSWORD, "");
-        edt_password.setText(password);
+        String password = preference.getString(PWD, "");
+        edt_p16.setText(password);
     }
 
     /**
@@ -76,71 +78,58 @@ public class LoginActivity extends BaseActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.btn_login)
     void login(View view) {
-        if (DebugManager.Login.LOGIN_MODE_PREVIEW) {// 调试模式
-            enterMainActivity();
-        } else {// 正常模式
-            String username = edt_username.getText().toString().trim();
-            String password = edt_password.getText().toString().trim();
-            if (username.isEmpty()) {
-                Toast.makeText(this, Notes.EMPTYUSERNAME, Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (password.isEmpty()) {
-                Toast.makeText(this, Notes.EMPTYPASSWORD, Toast.LENGTH_SHORT).show();
-                return;
-            }
-            // 保存用户名密码
-            preference.edit().putString(Preferences.USERNAME, username).apply();
-            preference.edit().putString(Preferences.PASSWORD, password).apply();
-            final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-            pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-            pDialog.setTitleText(Notes.LOGINING);
-            pDialog.setCancelable(false);
-            pDialog.show();
-            if (networkManager == null) {// 懒加载
-                networkManager = new NetworkManager(this);
-            }
-            LoginRequest userInfo = new LoginRequest(username, password);
-            networkManager.Login(userInfo, new NetworkListener() {
-                @Override
-                public void onSuccess(String response) {
-                    LogUtil.e("==登录成功==", response);
-                    pDialog.cancel();
-                    try {
-                        JSONObject obj = new JSONObject(response);
-                        if (obj.optBoolean("success")) {
-                            Gson gson = new Gson();
-                            ShiroUser user = gson.fromJson(
-                                    obj.getString("data"), ShiroUser.class);
-                            UserManager.getInstance().setUserInfo(user);
-                            enterMainActivity();
-                        } else {
-                            String msg = obj.optString("msg");
-                            Toast.makeText(LoginActivity.this, msg,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (Exception e) {
-                        Toast.makeText(LoginActivity.this,
-                                Notes.ERROR_ANALYSIS, Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                }
-
-                @Override
-                public void onFail(VolleyError error) {
-                    pDialog.cancel();
-                    LogUtil.e("==登录报错==", error.toString());
-                    Toast.makeText(LoginActivity.this, Notes.ERROR_404,
-                            Toast.LENGTH_SHORT).show();
-                }
-            }, new CookiesListener() {
-                @Override
-                public void onSId(String sid) {
-                    LogUtil.e("==cookies中的sid==", sid);
-                    MrtnApplication.sid = sid;
-                }
-            });
+        String username = edt_username.getText().toString().trim();
+        String pwd = edt_p16.getText().toString().trim();
+        if (username.isEmpty()) {
+            Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
+            return;
         }
+        if (pwd.isEmpty()) {
+            Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // 保存用户名密码
+        preference.edit().putString(USERNAME, username).apply();
+        preference.edit().putString(PWD, pwd).apply();
+        final SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setCancelable(false);
+        dialog.setTitleText("登录中...").show();
+        LoginRequest userInfo = new LoginRequest(username, pwd);
+        MrtnApplication.networkManager.Login(userInfo, new NetworkListener() {
+            @Override
+            public void onSuccess(String response) {
+                LogUtil.e(TAG, "response:  " + response);
+                dialog.cancel();
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if (obj.optBoolean("success")) {
+                        Gson gson = new Gson();
+                        ShiroUser user = gson.fromJson(obj.getString("data"), ShiroUser.class);
+                        UserManager.getInstance().setUserInfo(user);
+                        enterMainActivity();
+                    } else {
+                        String msg = obj.optString("msg");
+                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(LoginActivity.this, "解析错误", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFail(VolleyError error) {
+                dialog.cancel();
+                LogUtil.e(TAG, "error:  " + error.toString());
+                Toast.makeText(LoginActivity.this, "服务器访问拒绝", Toast.LENGTH_SHORT).show();
+            }
+        }, new CookiesListener() {
+            @Override
+            public void onSId(String sid) {
+                LogUtil.e(TAG, "sid:  " + sid);
+                MrtnApplication.sid = sid;
+            }
+        });
     }
 
     /**
@@ -148,21 +137,7 @@ public class LoginActivity extends BaseActivity {
      */
     void enterMainActivity() {
         Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(loginIntent);
-        overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+        startActivityWithAnim(loginIntent);
         finish();
-    }
-
-    interface Preferences {
-        String USERNAME = "username";// 帐号
-        String PASSWORD = "password";// 密码
-    }
-
-    interface Notes {
-        String LOGINING = " 登录中...";
-        String EMPTYUSERNAME = "请输入用户名";
-        String EMPTYPASSWORD = "请输入密码";
-        String ERROR_ANALYSIS = "解析错误";
-        String ERROR_404 = "服务器访问拒绝";
     }
 }

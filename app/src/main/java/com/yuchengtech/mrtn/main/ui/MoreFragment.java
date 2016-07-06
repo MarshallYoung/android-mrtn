@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yuchengtech.mrtn.R;
+import com.yuchengtech.mrtn.base.MrtnApplication;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -93,6 +94,7 @@ public class MoreFragment extends Fragment {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.cancel();
+                        MrtnApplication.sid = "";// 擦除session id
                         getActivity().finish();
                     }
                 })

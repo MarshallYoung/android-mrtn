@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 
+import com.yuchengtech.mrtn.R;
+
 import butterknife.ButterKnife;
 
 /**
@@ -69,6 +71,32 @@ public class BaseActivity extends Activity {
                 manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+    }
+
+    /**
+     * 带动画的转场
+     */
+    public void startActivityWithAnim(Intent intent) {
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
+
+    /**
+     * 带动画的关闭
+     */
+    public void finishWithAnim() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
     }
 
 //    @Override

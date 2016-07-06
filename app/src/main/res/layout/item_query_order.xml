@@ -25,7 +25,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:background="@drawable/shape_txt"
-            android:textSize="@dimen/input_text_size"></EditText>
+            android:textSize="@dimen/input_text_size" />
     </LinearLayout>
 
     <LinearLayout

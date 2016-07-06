@@ -184,13 +184,15 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="dm_content_summary_txt">15dip</dimen>
+    <dimen name="icon_length">30dp</dimen>
     <dimen name="input_text_size">16sp</dimen>
     <dimen name="margin_side_input">18dp</dimen>
     <dimen name="padding_content">15dp</dimen>
     <dimen name="progress_circle_radius">34dp</dimen>
     <dimen name="text_size">16sp</dimen>
-    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="title_text_size">24sp</dimen>
     <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
@@ -239,7 +241,7 @@
     <string name="dialog_ok">OK</string>
     <string name="exit">退出</string>
     <string name="homepage">首页</string>
-    <string name="input_password">输入密码</string>
+    <string name="input_pwd">输入密码</string>
     <string name="input_username">输入用户名</string>
     <string name="login">登录</string>
     <string name="message">消息</string>
@@ -1044,9 +1046,6 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
     <style name="Cell.Top">
         <item name="android:background">@drawable/selector_cell_top</item>
     </style>
-    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/mrtn_login_ck_style</item>
-    </style>
     <style name="EditText_Body">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1056,37 +1055,20 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:maxLines">1</item>
         <item name="android:layout_marginLeft">10dp</item>
     </style>
+    <style name="Icon">
+        <item name="android:layout_width">@dimen/icon_length</item>
+        <item name="android:layout_height">@dimen/icon_length</item>
+        <item name="android:contentDescription">@string/app_name</item>
+    </style>
+    <style name="Icon.Left">
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
     <style name="Icon_Arrow">
         <item name="android:layout_width">10dp</item>
         <item name="android:layout_height">16dp</item>
     </style>
     <style name="Icon_Arrow.Right_Gray">
         <item name="android:background">@drawable/icon_arrow_right</item>
-    </style>
-    <style name="LayerList">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">40dip</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_marginLeft">15dip</item>
-        <item name="android:layout_marginRight">15dip</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-    <style name="LayoutListLeftTextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">10dip</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:gravity">right</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-    </style>
-    <style name="LayoutListRightTextView">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">30dip</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:paddingLeft">10dip</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:singleLine">true</item>
     </style>
     <style name="Mydialog" parent="@android:Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
@@ -1401,37 +1383,5 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:paddingLeft">21dp</item>
         <item name="android:paddingRight">21dp</item>
         <item name="android:textColor">@color/button_text_color</item>
-    </style>
-    <style name="order_detail">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">2</item>
-        <item name="android:gravity">right</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-    </style>
-    <style name="order_detail_right">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">3</item>
-        <item name="android:gravity">left</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-        <item name="android:textColor">@color/cl_login_tiyan_huise</item>
-    </style>
-    <style name="trade_detail">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">3</item>
-        <item name="android:gravity">right</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-    </style>
-    <style name="waybill_detail_right">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">4</item>
-        <item name="android:gravity">left</item>
-        <item name="android:textSize">@dimen/input_text_size</item>
-        <item name="android:textColor">@color/cl_login_tiyan_huise</item>
     </style>
 </resources>
