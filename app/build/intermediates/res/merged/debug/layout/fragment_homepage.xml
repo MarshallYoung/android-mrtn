@@ -13,13 +13,11 @@
         android:contentDescription="@string/app_name" />
 
     <GridView
-        android:id="@+id/function_list"
+        android:id="@+id/gv_function"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:cacheColorHint="@color/gray_dark"
         android:horizontalSpacing="1dp"
-        android:listSelector="@color/gray_dark"
         android:numColumns="3"
         android:padding="1dp"
         android:verticalSpacing="1dp" />

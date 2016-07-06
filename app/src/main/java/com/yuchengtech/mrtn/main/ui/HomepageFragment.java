@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -17,8 +16,8 @@ import android.widget.Toast;
 import com.yuchengtech.mrtn.R;
 import com.yuchengtech.mrtn.http.IHttpURLs;
 import com.yuchengtech.mrtn.http.daoimpl.GetTaskConfigXml;
-import com.yuchengtech.mrtn.main.adapter.FunctionsAdapter;
-import com.yuchengtech.mrtn.main.bean.FunctionButtonInfo;
+import com.yuchengtech.mrtn.main.adapter.FunctionAdapter;
+import com.yuchengtech.mrtn.main.adapter.FunctionItem;
 import com.yuchengtech.mrtn.merchant.ui.QueryMerchantActivity;
 import com.yuchengtech.mrtn.order.ui.QueryOrdersActivity;
 import com.yuchengtech.mrtn.predict.ui.QueryPredictActivity;
@@ -26,7 +25,6 @@ import com.yuchengtech.mrtn.scan.ui.ScanCodeActivity;
 import com.yuchengtech.mrtn.utils.xml.FileService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -37,18 +35,19 @@ import butterknife.ButterKnife;
  * @author yuanshuai (marshall.yuan@foxmail.com)
  * @date 2016年4月20日 下午5:56:46
  */
-public class HomepageFragment extends Fragment implements OnItemClickListener {
+public class HomepageFragment extends Fragment {
 
     private View fragmentView;
 
     @Bind(R.id.btn_back)
     Button btn_back;
     @Bind(R.id.gv_function)
-    public GridView gv_functions;
+    public GridView gv_function;
 
-    String[] texts = {"信息查询", "扫码", "待办列表", "办结列表", "预计上门时间"};
-    List<FunctionButtonInfo> functionList = new ArrayList<>();
-    private FunctionsAdapter adapter;
+    int[] images = {R.drawable.icon_query_info, R.drawable.icon_query_info,
+            R.drawable.icon_backlog, R.drawable.icon_done_order,
+            R.drawable.icon_predict, R.drawable.empty};
+    String[] texts = {"信息查询", "扫码", "待办列表", "办结列表", "预计上门时间", ""};
     private HomeIndexHandler handler = new HomeIndexHandler();
     private int count = 0;
 
@@ -69,7 +68,7 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initData();
+//        initData();
         initView();
         loadXmlConfig("task_mcinfo.xml");
         loadXmlConfig("task_001.xml");
@@ -81,6 +80,11 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
         loadXmlConfig("task_008.xml");
         loadXmlConfig("task_009.xml");
         loadXmlConfig("task_010.xml");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -125,99 +129,18 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
         getTaskConfigXml.request(type);
     }
 
-
-    private void initData() {
-        functionList.clear();
-        FunctionButtonInfo mcinfoEntity = new FunctionButtonInfo();
-        mcinfoEntity.id = FunctionButtonInfo.HOME_MCINFO;
-        mcinfoEntity.imgIndex = R.drawable.icon_query_info;
-        mcinfoEntity.name = "信息查询";
-        functionList.add(mcinfoEntity);
-
-        FunctionButtonInfo scanCodeEntity = new FunctionButtonInfo();
-        scanCodeEntity.id = FunctionButtonInfo.HOME_SCAN_CODE;
-        scanCodeEntity.imgIndex = R.drawable.icon_query_info;
-        scanCodeEntity.name = "扫码";
-        functionList.add(scanCodeEntity);
-
-        FunctionButtonInfo todoEntity = new FunctionButtonInfo();
-        todoEntity.id = FunctionButtonInfo.HOME_TODO_LIST;
-        todoEntity.imgIndex = R.drawable.icon_backlog;
-        todoEntity.name = "待办列表";
-        functionList.add(todoEntity);
-
-        FunctionButtonInfo completedEntity = new FunctionButtonInfo();
-        completedEntity.id = FunctionButtonInfo.HOME_COMPLETED_LIST;
-        completedEntity.imgIndex = R.drawable.icon_done_order;
-        completedEntity.name = "办结列表";
-        functionList.add(completedEntity);
-
-        FunctionButtonInfo order_predict = new FunctionButtonInfo();
-        order_predict.id = FunctionButtonInfo.HOME_PREDICT_TIME;
-        order_predict.imgIndex = R.drawable.icon_predict;
-        order_predict.name = "预计上门时间";
-        functionList.add(order_predict);
-
-        FunctionButtonInfo order_install = new FunctionButtonInfo();
-        order_install.id = FunctionButtonInfo.HOME_ORDER_INSTALL;
-        order_install.imgIndex = R.drawable.empty;
-        order_install.name = "";
-        functionList.add(order_install);
-
-        for (int i = functionList.size(); i < 9; i++) {
-            FunctionButtonInfo order_empty = new FunctionButtonInfo();
-            order_empty.id = i;
-            order_empty.imgIndex = 0;
-            order_empty.name = "";
-            functionList.add(order_empty);
-        }
-    }
-
     private void initView() {
         btn_back.setVisibility(View.GONE);
-        adapter = new FunctionsAdapter(this, functionList);
-        gv_functions.setAdapter(adapter);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Jump2Type(arg2);
-    }
-
-    public void Jump2Type(int index) {
-        switch (index) {
-            case FunctionButtonInfo.HOME_MCINFO:// 商户列表查询
-                Intent orderIntent = new Intent(getActivity(), QueryMerchantActivity.class);
-                startActivity(orderIntent);
-                break;
-            case FunctionButtonInfo.HOME_SCAN_CODE:// 扫码
-                Intent scanCodeIntent = new Intent(getActivity(), ScanCodeActivity.class);
-                startActivity(scanCodeIntent);
-                break;
-            case FunctionButtonInfo.HOME_TODO_LIST:
-                Intent todoIntent = new Intent(getActivity(), QueryOrdersActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("taskStatus", "1");// 待办
-                todoIntent.putExtras(bundle);
-                todoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(todoIntent);
-                break;
-            case FunctionButtonInfo.HOME_COMPLETED_LIST:
-                Intent completedIntent = new Intent(getActivity(), QueryOrdersActivity.class);
-                Bundle completedbundle = new Bundle();
-                completedbundle.putSerializable("taskStatus", "2");// 办结
-                completedIntent.putExtras(completedbundle);
-                completedIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(completedIntent);
-                break;
-            case FunctionButtonInfo.HOME_PREDICT_TIME: // 预计上门工单查询
-                Intent order_predict = new Intent(getActivity(), QueryPredictActivity.class);
-                Bundle bundle_predict = new Bundle();
-                bundle_predict.putSerializable("type", "3");
-                order_predict.putExtras(bundle_predict);
-                startActivity(order_predict);
-                break;
+        ArrayList itemList = new ArrayList();
+        for (int i = 0; i < texts.length; i++) {
+            FunctionItem item = new FunctionItem();
+            item.image = images[i];
+            item.text = texts[i];
+            itemList.add(item);
         }
+        FunctionAdapter adapter = new FunctionAdapter(getActivity(), itemList);
+        gv_function.setAdapter(adapter);
+        gv_function.setOnItemClickListener(itemClickListener);
     }
 
     @SuppressWarnings("unused")
@@ -240,4 +163,46 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
             }
         }
     }
+
+    /**
+     * 点击功能列表执行的方法
+     */
+    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            switch (position) {
+                case 0:// 商户列表查询
+                    Intent orderIntent = new Intent(getActivity(), QueryMerchantActivity.class);
+                    startActivity(orderIntent);
+                    break;
+                case 1:// 扫码
+                    Intent scanCodeIntent = new Intent(getActivity(), ScanCodeActivity.class);
+                    startActivity(scanCodeIntent);
+                    break;
+                case 2:// 待办
+                    Intent todoIntent = new Intent(getActivity(), QueryOrdersActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("taskStatus", "1");// 待办
+                    todoIntent.putExtras(bundle);
+                    todoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(todoIntent);
+                    break;
+                case 3:// 办结
+                    Intent completedIntent = new Intent(getActivity(), QueryOrdersActivity.class);
+                    Bundle completedbundle = new Bundle();
+                    completedbundle.putSerializable("taskStatus", "2");// 办结
+                    completedIntent.putExtras(completedbundle);
+                    completedIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(completedIntent);
+                    break;
+                case 4:// 预计
+                    Intent order_predict = new Intent(getActivity(), QueryPredictActivity.class);
+                    Bundle bundle_predict = new Bundle();
+                    bundle_predict.putSerializable("type", "3");
+                    order_predict.putExtras(bundle_predict);
+                    startActivity(order_predict);
+                    break;
+            }
+        }
+    };
 }
