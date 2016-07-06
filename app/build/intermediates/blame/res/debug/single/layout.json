@@ -76,10 +76,6 @@
         "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/item_toolbar.xml",
-        "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/src/main/res/layout/item_toolbar.xml"
-    },
-    {
         "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/activity_scancode.xml",
         "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/src/main/res/layout/activity_scancode.xml"
     },
@@ -114,10 +110,6 @@
     {
         "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
         "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/item_tabhost.xml",
-        "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/src/main/res/layout/item_tabhost.xml"
     },
     {
         "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
@@ -250,6 +242,10 @@
     {
         "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/activity_query_orders.xml",
         "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/src/main/res/layout/activity_query_orders.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/toolbar.xml",
+        "source": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/src/main/res/layout/toolbar.xml"
     },
     {
         "merged": "/Users/mac/Documents/AndroidStudioProjects/asmrtn/app/build/intermediates/res/merged/debug/layout/mrtn_mc_list_item.xml",

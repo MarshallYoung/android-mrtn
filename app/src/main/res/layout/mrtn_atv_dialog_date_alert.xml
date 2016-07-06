@@ -20,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:text="支付方式"
             android:textColor="#e88889"
-            android:textSize="@dimen/textsize_title" />
+            android:textSize="@dimen/title_text_size" />
 
         <TextView
             android:id="@+id/txt_content"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:calendarViewShown="false"
-            android:textSize="@dimen/textsize_input" />
+            android:textSize="@dimen/input_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:textSize="@dimen/textsize_input" />
+            android:textSize="@dimen/input_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +101,7 @@
             android:paddingTop="5dip"
             android:text="取消"
             android:textColor="@color/cl_dialog_canle"
-            android:textSize="@dimen/textsize_title" />
+            android:textSize="@dimen/title_text_size" />
 
         <TextView
             android:id="@+id/txt_sure"
@@ -115,7 +115,7 @@
             android:paddingTop="5dip"
             android:text="确定"
             android:textColor="@color/gray_title"
-            android:textSize="@dimen/textsize_title" />
+            android:textSize="@dimen/title_text_size" />
     </LinearLayout>
 
 </LinearLayout>

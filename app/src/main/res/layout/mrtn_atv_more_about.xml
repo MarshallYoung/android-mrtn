@@ -4,7 +4,7 @@
     android:background="@color/gray_background"
     android:orientation="vertical">
 
-    <include layout="@layout/item_toolbar" />
+    <include layout="@layout/toolbar" />
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -39,7 +39,7 @@
                     android:layout_marginLeft="20dip"
                     android:text="北京宇信易诚信息技术公司简介"
                     android:textColor="#183884"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
 
             <TextView
@@ -52,7 +52,7 @@
                 android:background="@drawable/mrtn_more_about_text_bg"
                 android:text=""
                 android:textColor="#444445"
-                android:textSize="@dimen/textsize_input" />
+                android:textSize="@dimen/input_text_size" />
 
             <TextView
                 android:id="@+id/txt_ver"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="15dip"
                 android:text="版本号：V1.0.0"
                 android:textColor="#444445"
-                android:textSize="@dimen/textsize_input" />
+                android:textSize="@dimen/input_text_size" />
 
             <Button
                 android:id="@+id/btn_phone"

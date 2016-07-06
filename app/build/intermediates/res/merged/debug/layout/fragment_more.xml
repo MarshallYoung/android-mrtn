@@ -4,12 +4,11 @@
     android:background="@color/gray_background"
     android:orientation="vertical">
 
-    <include layout="@layout/item_toolbar" />
+    <include layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,57 +17,40 @@
 
             <LinearLayout
                 android:id="@+id/ll_user_info"
-                style="@style/LinearLayout_Option">
+                style="@style/Cell.Single"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:layout_weight="1"
-                    android:text="@string/basic_info"
-                    android:textSize="@dimen/textsize_input" />
+                    android:text="@string/basic_info" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_arrow_right" />
+                <View style="@style/Icon_Arrow.Right_Gray" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_about_us"
-                style="@style/LinearLayout_Option"
-                android:layout_marginTop="15dp">
+                style="@style/Cell.Top"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:layout_weight="1"
-                    android:text="@string/about_us"
-                    android:textSize="@dimen/textsize_input" />
+                    android:text="@string/about_us" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_arrow_right" />
+                <View style="@style/Icon_Arrow.Right_Gray" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_check_update"
-                style="@style/LinearLayout_Option">
+                style="@style/Cell.Bottom">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:layout_weight="1"
-                    android:text="@string/check_update"
-                    android:textSize="@dimen/textsize_input" />
+                    android:text="@string/check_update" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_arrow_right" />
+                <View style="@style/Icon_Arrow.Right_Gray" />
             </LinearLayout>
 
             <Button

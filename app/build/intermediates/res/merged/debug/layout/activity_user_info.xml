@@ -4,7 +4,7 @@
     android:background="@color/gray_background"
     android:orientation="vertical">
 
-    <include layout="@layout/item_toolbar" />
+    <include layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,9 +23,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:text="登录名称" />
 
                 <TextView
@@ -34,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/cl_login_tiyan"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
 
             <View
@@ -49,9 +47,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:text="        邮箱" />
 
                 <TextView
@@ -60,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/cl_login_tiyan"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
 
             <View
@@ -75,9 +71,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:text="        公司" />
 
                 <TextView
@@ -86,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/cl_login_tiyan"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
 
             <View
@@ -101,9 +95,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:text="登录类型" />
 
                 <TextView
@@ -112,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/cl_login_tiyan"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
 
             <View
@@ -127,9 +119,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextView_Header"
                     android:text="        电话" />
 
                 <TextView
@@ -138,9 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/cl_login_tiyan"
-                    android:textSize="@dimen/textsize_input" />
+                    android:textSize="@dimen/input_text_size" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

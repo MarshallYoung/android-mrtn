@@ -21,6 +21,6 @@
         android:layout_marginTop="3dip"
         android:text=""
         android:textColor="#353434"
-        android:textSize="@dimen/textsize_input" />
+        android:textSize="@dimen/input_text_size" />
 
 </LinearLayout>

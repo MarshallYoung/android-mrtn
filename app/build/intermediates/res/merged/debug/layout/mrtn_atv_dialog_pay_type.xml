@@ -20,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:text="支付方式"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/textsize_title" />
+            android:textSize="@dimen/title_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +64,7 @@
             android:layout_gravity="center_horizontal"
             android:text="取  消"
             android:textColor="@color/gray_text"
-            android:textSize="@dimen/textsize_title" />
+            android:textSize="@dimen/title_text_size" />
     </LinearLayout>
 
 </LinearLayout>

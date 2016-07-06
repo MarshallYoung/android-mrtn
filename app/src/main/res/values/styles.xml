@@ -1,5 +1,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
     <style name="Mydialog" parent="@android:Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -24,7 +29,7 @@
         <item name="android:paddingLeft">10dip</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">right</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
     </style>
 
     <style name="LayoutListRightTextView">
@@ -32,7 +37,7 @@
         <item name="android:layout_height">30dip</item>
         <item name="android:layout_weight">1</item>
         <item name="android:paddingLeft">10dip</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -43,7 +48,7 @@
         <item name="android:layout_weight">2</item>
         <item name="android:gravity">right</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
     </style>
 
     <style name="order_detail_right">
@@ -51,7 +56,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">3</item>
         <item name="android:gravity">left</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
         <item name="android:textColor">@color/cl_login_tiyan_huise</item>
     </style>
 
@@ -60,7 +65,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">4</item>
         <item name="android:gravity">left</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
         <item name="android:textColor">@color/cl_login_tiyan_huise</item>
     </style>
 
@@ -70,52 +75,16 @@
         <item name="android:layout_weight">3</item>
         <item name="android:gravity">right</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+        <item name="android:textSize">@dimen/input_text_size</item>
     </style>
 
-    <style name="top_tab_radioButton">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:button">@null</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:textSize">@dimen/dm_content_summary_txt</item>
-    </style>
-
-    <style name="search_center_top_tab">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:padding">5dip</item>
-        <item name="android:textSize">@dimen/dm_content_summary_txt</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:button">@null</item>
-        <item name="android:textColor">@color/cl_login_tiyan</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:ellipsize">end</item>
-    </style>
-
-    <style name="tab_item">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">4dp</item>
-        <item name="android:textColor">@color/selector_tab_text</item>
-        <item name="android:button">@null</item>
-    </style>
     <!-- 按钮 -->
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/textsize_button</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
@@ -123,20 +92,68 @@
         <item name="android:background">@drawable/selector_btn_blue</item>
     </style>
 
-    <!-- 选项卡按钮 -->
-    <style name="LinearLayout_Option">
+    <!-- 导航栏按钮 -->
+    <style name="Button_Toolbar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:textColor">@color/selector_button_toolbar</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <!-- cell,LinearLayout专用 -->
+    <style name="Cell">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_height">@dimen/cell_height</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:background">@drawable/selector_btn_option</item>
+        <item name="android:paddingLeft">@dimen/cell_padding</item>
+        <item name="android:paddingRight">@dimen/cell_padding</item>
     </style>
 
-    <!-- 左侧文字 -->
-    <style name="tv_left">
-        <item name="android:gravity">end</item>
-        <item name="android:textSize">@dimen/textsize_input</item>
+    <style name="Cell.Top">
+        <item name="android:background">@drawable/selector_cell_top</item>
     </style>
 
+    <style name="Cell.Middle">
+        <item name="android:background">@drawable/selector_cell_middle</item>
+    </style>
+
+    <style name="Cell.Bottom">
+        <item name="android:background">@drawable/selector_cell_bottom</item>
+    </style>
+
+    <style name="Cell.Single">
+        <item name="android:background">@drawable/selector_cell_single</item>
+    </style>
+
+    <!-- 箭头 -->
+    <style name="Icon_Arrow">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
+
+    <style name="Icon_Arrow.Right_Gray">
+        <item name="android:background">@drawable/icon_arrow_right</item>
+    </style>
+
+    <!-- 放在EditText前面的TextView -->
+    <style name="TextView_Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:lines">1</item>
+    </style>
+    <!-- 基本的EditText -->
+    <style name="EditText_Body">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
 </resources>

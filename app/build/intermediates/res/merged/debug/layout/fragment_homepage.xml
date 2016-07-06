@@ -4,7 +4,7 @@
     android:background="@color/gray_background"
     android:orientation="vertical">
 
-    <include layout="@layout/item_toolbar" />
+    <include layout="@layout/toolbar" />
 
     <ImageView
         android:layout_width="match_parent"

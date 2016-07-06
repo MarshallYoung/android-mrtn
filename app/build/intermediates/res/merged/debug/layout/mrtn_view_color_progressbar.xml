@@ -22,6 +22,6 @@
         android:paddingRight="5dp"
         android:text="请休息一下,正在为您打开"
         android:textColor="#e0fbfc"
-        android:textSize="@dimen/textsize_input" />
+        android:textSize="@dimen/input_text_size" />
 
 </LinearLayout>

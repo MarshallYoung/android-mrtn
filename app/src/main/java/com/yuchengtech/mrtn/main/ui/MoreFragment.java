@@ -11,12 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yuchengtech.mrtn.R;
-import com.yuchengtech.mrtn.views.DialogAlert;
-import com.yuchengtech.mrtn.views.DialogAlert.onDialogAlertData;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * 更多
@@ -59,8 +58,7 @@ public class MoreFragment extends Fragment {
         txt_title.setText("更多");
     }
 
-    @OnClick({R.id.ll_user_info, R.id.ll_about_us, R.id.ll_check_update,
-            R.id.btn_exit})
+    @OnClick({R.id.ll_user_info, R.id.ll_about_us, R.id.ll_check_update, R.id.btn_exit})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_user_info:// 用户信息
@@ -79,17 +77,30 @@ public class MoreFragment extends Fragment {
             case R.id.ll_check_update:// 检查更新
                 Toast.makeText(getActivity(), "当前为最新版本", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_exit:
-                DialogAlert dialogAlert = new DialogAlert(getActivity(), "温馨提示",
-                        "您确定要退出软件吗？");
-                dialogAlert.setOnDissDatas(new onDialogAlertData() {
+        }
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.btn_exit)
+    void exit(View view) {
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("提示")
+                .setContentText("您确定要退出软件吗?")
+                .setCancelText("取消")
+                .setConfirmText("确定!")
+                .showCancelButton(true)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
-                    public void setData(String name) {
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
                         getActivity().finish();
                     }
-                });
-                dialogAlert.show();
-                break;
-        }
+                })
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                }).show();
     }
 }

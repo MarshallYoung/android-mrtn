@@ -34,11 +34,7 @@
 
     <Button
         android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Button_Toolbar"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="提交"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textsize_button" />
+        android:text="提交" />
 </RelativeLayout>

@@ -27,7 +27,6 @@ public class PhotoActivity extends BaseActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_photo);
         ButterKnife.bind(this);
         txt_title.setText("图片预览");
@@ -42,5 +41,4 @@ public class PhotoActivity extends BaseActivity {
         String img_path = intent.getStringExtra("img_path");
         bitmapUtils.display(imageView, img_path);
     }
-
 }
