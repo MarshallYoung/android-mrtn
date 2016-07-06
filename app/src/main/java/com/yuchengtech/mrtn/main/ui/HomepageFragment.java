@@ -39,23 +39,23 @@ import butterknife.ButterKnife;
  */
 public class HomepageFragment extends Fragment implements OnItemClickListener {
 
-    @Bind(R.id.function_list)
-    public GridView gr_functions;
+    private View fragmentView;
+
     @Bind(R.id.btn_back)
     Button btn_back;
-    List<FunctionButtonInfo> functionList = new ArrayList<FunctionButtonInfo>();
-    private View fragmentView;
+    @Bind(R.id.gv_function)
+    public GridView gv_functions;
+
+    String[] texts = {"信息查询", "扫码", "待办列表", "办结列表", "预计上门时间"};
+    List<FunctionButtonInfo> functionList = new ArrayList<>();
     private FunctionsAdapter adapter;
     private HomeIndexHandler handler = new HomeIndexHandler();
     private int count = 0;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (fragmentView == null) {
-            fragmentView = inflater.inflate(R.layout.fragment_homepage,
-                    container, false);
+            fragmentView = inflater.inflate(R.layout.fragment_homepage, container, false);
             ButterKnife.bind(this, fragmentView);
         }
         // 缓存Fragment,避免重新执行onCreateView
@@ -176,7 +176,7 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
     private void initView() {
         btn_back.setVisibility(View.GONE);
         adapter = new FunctionsAdapter(this, functionList);
-        gr_functions.setAdapter(adapter);
+        gv_functions.setAdapter(adapter);
     }
 
     @Override
@@ -187,50 +187,35 @@ public class HomepageFragment extends Fragment implements OnItemClickListener {
     public void Jump2Type(int index) {
         switch (index) {
             case FunctionButtonInfo.HOME_MCINFO:// 商户列表查询
-                Intent orderIntent = new Intent(getActivity(),
-                        QueryMerchantActivity.class);
+                Intent orderIntent = new Intent(getActivity(), QueryMerchantActivity.class);
                 startActivity(orderIntent);
-                getActivity().overridePendingTransition(R.anim.slide_in_from_right,
-                        R.anim.slide_out_to_left);
                 break;
             case FunctionButtonInfo.HOME_SCAN_CODE:// 扫码
-                Intent scanCodeIntent = new Intent(getActivity(),
-                        ScanCodeActivity.class);
+                Intent scanCodeIntent = new Intent(getActivity(), ScanCodeActivity.class);
                 startActivity(scanCodeIntent);
-                getActivity().overridePendingTransition(R.anim.slide_in_from_right,
-                        R.anim.slide_out_to_left);
                 break;
             case FunctionButtonInfo.HOME_TODO_LIST:
-                Intent todoIntent = new Intent(getActivity(),
-                        QueryOrdersActivity.class);
+                Intent todoIntent = new Intent(getActivity(), QueryOrdersActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("taskStatus", "1");// 待办
                 todoIntent.putExtras(bundle);
                 todoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(todoIntent);
-                getActivity().overridePendingTransition(R.anim.slide_in_from_right,
-                        R.anim.slide_out_to_left);
                 break;
             case FunctionButtonInfo.HOME_COMPLETED_LIST:
-                Intent completedIntent = new Intent(getActivity(),
-                        QueryOrdersActivity.class);
+                Intent completedIntent = new Intent(getActivity(), QueryOrdersActivity.class);
                 Bundle completedbundle = new Bundle();
                 completedbundle.putSerializable("taskStatus", "2");// 办结
                 completedIntent.putExtras(completedbundle);
                 completedIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(completedIntent);
-                getActivity().overridePendingTransition(R.anim.slide_in_from_right,
-                        R.anim.slide_out_to_left);
                 break;
             case FunctionButtonInfo.HOME_PREDICT_TIME: // 预计上门工单查询
-                Intent order_predict = new Intent(getActivity(),
-                        QueryPredictActivity.class);
+                Intent order_predict = new Intent(getActivity(), QueryPredictActivity.class);
                 Bundle bundle_predict = new Bundle();
                 bundle_predict.putSerializable("type", "3");
                 order_predict.putExtras(bundle_predict);
                 startActivity(order_predict);
-                getActivity().overridePendingTransition(R.anim.slide_in_from_right,
-                        R.anim.slide_out_to_left);
                 break;
         }
     }
