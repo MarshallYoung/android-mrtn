@@ -94,9 +94,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 /**
  * 订单详情界面
  */
-public class OrderInfoActivity extends BaseActivity implements OnClickListener,
-        OnUploadProcessListener {
+public class OrderInfoActivity extends BaseActivity implements OnClickListener, OnUploadProcessListener {
 
+    private static final String TAG = "OrderInfoActivity";
     // 上传文件响应
     protected static final int UPLOAD_FILE_DONE = 2;
     private static final int TAKE_PICTURE = 1;
@@ -245,16 +245,14 @@ public class OrderInfoActivity extends BaseActivity implements OnClickListener,
         });
         mGridView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                String img_path = view.getTag().toString();
-                Intent intent = new Intent(OrderInfoActivity.this,
-                        PhotoActivity.class);
-                intent.putExtra("img_path", img_path);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String imagePath = view.getTag().toString();
+                LogUtil.e(TAG, "image path:  " + imagePath);
+                Intent intent = new Intent(OrderInfoActivity.this, PhotoActivity.class);
+                intent.putExtra("img_path", imagePath);
                 startActivity(intent);
             }
         });
-
     }
 
     /**
@@ -315,8 +313,7 @@ public class OrderInfoActivity extends BaseActivity implements OnClickListener,
                 FileUtil.createSDDir("");
             }
             drr.add(FileUtil.SDPATH + address + ".jpg");
-            Uri imageUri = Uri.parse("file:///" + FileUtil.SDPATH + address
-                    + ".jpg");
+            Uri imageUri = Uri.parse("file:///" + FileUtil.SDPATH + address + ".jpg");
             final Intent intent = new Intent("com.android.camera.action.CROP");
 
             // 鐓х墖URL鍦板潃
@@ -329,8 +326,7 @@ public class OrderInfoActivity extends BaseActivity implements OnClickListener,
             // 杈撳嚭璺緞
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             // 杈撳嚭鏍煎紡
-            intent.putExtra("outputFormat",
-                    Bitmap.CompressFormat.JPEG.toString());
+            intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
             // 涓嶅惎鐢ㄤ汉鑴歌瘑鍒�
             intent.putExtra("noFaceDetection", false);
             intent.putExtra("return-data", false);

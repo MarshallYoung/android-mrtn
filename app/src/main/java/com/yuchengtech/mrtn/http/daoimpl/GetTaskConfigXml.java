@@ -3,6 +3,7 @@ package com.yuchengtech.mrtn.http.daoimpl;
 import android.content.Context;
 
 import com.yuchengtech.mrtn.base.YXAPI;
+import com.yuchengtech.mrtn.base.util.LogUtil;
 import com.yuchengtech.mrtn.http.IHttpURLs;
 import com.yuchengtech.mrtn.http.request.HttpConnectGet;
 import com.yuchengtech.mrtn.http.request.IHttpListener;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetTaskConfigXml implements IHttpListener {
+
+    private static final String LOG_TAG = "GetTaskConfigXml";
     private String TAG = "resources/upload/xml/";
     private HttpConnectGet conn;
     private IHttpURLs listener;
@@ -26,6 +29,7 @@ public class GetTaskConfigXml implements IHttpListener {
         this.fileName = fileName;
         if (conn == null) {
             conn = new HttpConnectGet(YXAPI.URL + TAG + fileName, this);
+            LogUtil.e(LOG_TAG, YXAPI.URL + TAG + fileName);
         }
     }
 

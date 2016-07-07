@@ -98,11 +98,12 @@ public class LoginActivity extends BaseActivity {
         LoginRequest userInfo = new LoginRequest(username, pwd);
         MrtnApplication.networkManager.Login(userInfo, new NetworkListener() {
             @Override
-            public void onSuccess(String response) {
-                LogUtil.e(TAG, "response:  " + response);
+            public void onSuccess(Object response) {
+                String rsp = (String) response;
+                LogUtil.e(TAG, "response:  " + rsp);
                 dialog.cancel();
                 try {
-                    JSONObject obj = new JSONObject(response);
+                    JSONObject obj = new JSONObject(rsp);
                     if (obj.optBoolean("success")) {
                         Gson gson = new Gson();
                         ShiroUser user = gson.fromJson(obj.getString("data"), ShiroUser.class);

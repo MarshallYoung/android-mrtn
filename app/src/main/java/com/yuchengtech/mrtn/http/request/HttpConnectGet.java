@@ -49,9 +49,7 @@ public class HttpConnectGet {
             HttpGet httpGet = new HttpGet(url);
             client = new DefaultHttpClient();
             // 请求超时
-            client.getParams()
-                    .setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,
-                            CONNECTION_TIMEOUT);
+            client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, CONNECTION_TIMEOUT);
 
             httpGet.setHeader("android_request", "1");
             HttpResponse httpResponse = client.execute(httpGet);

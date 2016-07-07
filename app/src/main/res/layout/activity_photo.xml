@@ -3,11 +3,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
-
     <com.yuchengtech.mrtn.views.ZoomImageView
         android:id="@+id/ziv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="matrix" />
+        android:scaleType="fitXY" />
 </RelativeLayout>

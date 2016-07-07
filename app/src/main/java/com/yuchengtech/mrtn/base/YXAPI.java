@@ -8,5 +8,6 @@ public interface YXAPI {
     // String URL = "http://172.16.1.198:8080/mms/";
     String SUCCES_CODE = "00";// 成功代码
     String URL_LOGIN = URL + "login/appLogin";
+    String URL_DOWNLOADXML = URL + "resources/upload/xml/";
     String DATA_MODO_ERR = "数据解析异常";
 }

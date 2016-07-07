@@ -1,6 +1,7 @@
 package com.yuchengtech.mrtn.main.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +14,11 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.yuchengtech.mrtn.R;
+import com.yuchengtech.mrtn.base.MrtnApplication;
+import com.yuchengtech.mrtn.base.manager.NetworkManager;
+import com.yuchengtech.mrtn.base.util.LogUtil;
 import com.yuchengtech.mrtn.http.IHttpURLs;
 import com.yuchengtech.mrtn.http.daoimpl.GetTaskConfigXml;
 import com.yuchengtech.mrtn.main.adapter.FunctionAdapter;
@@ -28,6 +33,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * 主页
@@ -37,12 +43,14 @@ import butterknife.ButterKnife;
  */
 public class HomepageFragment extends Fragment {
 
+    private static final String TAG = "HomepageFragment";
     private View fragmentView;
 
     @Bind(R.id.btn_back)
     Button btn_back;
     @Bind(R.id.gv_function)
     public GridView gv_function;
+    private SweetAlertDialog dialog;
 
     int[] images = {R.drawable.icon_query_info, R.drawable.icon_query_info,
             R.drawable.icon_backlog, R.drawable.icon_done_order,
@@ -56,6 +64,7 @@ public class HomepageFragment extends Fragment {
         if (fragmentView == null) {
             fragmentView = inflater.inflate(R.layout.fragment_homepage, container, false);
             ButterKnife.bind(this, fragmentView);
+            initView();
         }
         // 缓存Fragment,避免重新执行onCreateView
         ViewGroup parentView = (ViewGroup) fragmentView.getParent();
@@ -66,31 +75,39 @@ public class HomepageFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-//        initData();
-        initView();
-        loadXmlConfig("task_mcinfo.xml");
-        loadXmlConfig("task_001.xml");
-        loadXmlConfig("task_002.xml");
-        loadXmlConfig("task_003.xml");
-        loadXmlConfig("task_004.xml");
-        loadXmlConfig("task_006.xml");
-        loadXmlConfig("task_007.xml");
-        loadXmlConfig("task_008.xml");
-        loadXmlConfig("task_009.xml");
-        loadXmlConfig("task_010.xml");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    private void downloadXml(String fileName, boolean isEnded) {
+        final String fn = fileName;
+        final boolean isEnd = isEnded;
+        MrtnApplication.networkManager.downloadXml(fileName, new NetworkManager.NetworkListener() {
+            @Override
+            public void onSuccess(Object response) {
+                LogUtil.e(TAG, fn + ":  " + response);
+                FileService fService = new FileService(getActivity());
+                byte[] buffer = ((String) response).getBytes();
+                try {
+                    fService.writeDateFile(fn, buffer);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "解析出错", Toast.LENGTH_SHORT).show();
+                }
+                if (isEnd) {
+                    dismissDialog();
+                }
+            }
+
+            @Override
+            public void onFail(VolleyError error) {
+                if (isEnd) {
+                    dismissDialog();
+                }
+                Toast.makeText(getActivity(), "连接服务器出错", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadXmlConfig(String type) {
@@ -131,6 +148,10 @@ public class HomepageFragment extends Fragment {
 
     private void initView() {
         btn_back.setVisibility(View.GONE);
+        dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setCancelable(false);
+        dialog.setTitleText("初始化...").show();
         ArrayList itemList = new ArrayList();
         for (int i = 0; i < texts.length; i++) {
             FunctionItem item = new FunctionItem();
@@ -141,6 +162,27 @@ public class HomepageFragment extends Fragment {
         FunctionAdapter adapter = new FunctionAdapter(getActivity(), itemList);
         gv_function.setAdapter(adapter);
         gv_function.setOnItemClickListener(itemClickListener);
+        // 初始化xml
+        loadXmlConfig("task_mcinfo.xml");
+        loadXmlConfig("task_001.xml");
+        loadXmlConfig("task_002.xml");
+        loadXmlConfig("task_003.xml");
+        loadXmlConfig("task_004.xml");
+        loadXmlConfig("task_006.xml");
+        loadXmlConfig("task_007.xml");
+        loadXmlConfig("task_008.xml");
+        loadXmlConfig("task_009.xml");
+        loadXmlConfig("task_010.xml");
+//        downloadXml("task_mcinfo.xml", false);
+//        downloadXml("task_001.xml", false);
+//        downloadXml("task_002.xml", false);
+//        downloadXml("task_003.xml", false);
+//        downloadXml("task_004.xml", false);
+//        downloadXml("task_006.xml", false);
+//        downloadXml("task_007.xml", false);
+//        downloadXml("task_008.xml", false);
+//        downloadXml("task_009.xml", false);
+//        downloadXml("task_010.xml", true);
     }
 
     @SuppressWarnings("unused")
@@ -153,7 +195,7 @@ public class HomepageFragment extends Fragment {
                 case 10: // 成功 - 获取配置信息
                     int num = msg.getData().getInt("num");
                     if (num == 8) {
-                        Toast.makeText(getActivity(), "配置文件更新完成!", Toast.LENGTH_SHORT).show();
+                        dismissDialog();
                     }
                     break;
                 case -1: // 失败 - 获取配置信息
@@ -205,4 +247,10 @@ public class HomepageFragment extends Fragment {
             }
         }
     };
+
+    private void dismissDialog() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
 }
